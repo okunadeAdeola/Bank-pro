@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="container shadow p-5">
+        <p>Add money</p>
+        <label for="">Amount</label>
+        <input type="text" name="" id="amount" class="form-control">
+        <label for="" class="mt-2">Pin</label>
+        <input type="text" name="" id="pin" class="form-control">
+        <button class="mt-2 btn btn-success" onclick="submit()">Submit</button>
+    </div>
+
+    <script>
+        // let getuser=JSON.parse(localStorage.bankuser)
+        // let currentuser = localStorage.currentuser
+        let users = JSON.parse(localStorage.getItem('userdetails')); 
+            console.log(users);
+            let current_user_index = localStorage.getItem('user_index') ? Number(localStorage.getItem('user_index')) : null; 
+            console.log(current_user_index); console.log(localStorage.getItem('user_index'));
+        // var retrievedobj = JSON.parse(localStorage.getItem('userdetails'));
+        // console.log(retrievedobj);
+        const submit=()=>{
+            if(users[0].pin==""){
+                alert("You have not set your transaction pin")
+            }
+            else{
+                if(users[current_user_index].pin==pin.value){
+                    users[current_user_index].balance=users[current_user_index].balance+Number(amount.value)
+                    localStorage.setItem('userdetails', JSON.stringify(users))
+                    window.location.href='index.html'
+                }
+                else{
+                    alert("Incorrect pin")
+                }
+            }
+        }
+    </script>
+    <script src="bootstrap.js"></script>
+</body>
+</html>

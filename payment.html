@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paystack Payment Integration</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        #paymentForm {
+            width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"], input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 500px) {
+            #paymentForm {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Pay with Paystack</h1>
+    <form id="paymentForm">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email-address" required />
+        </div>
+        <div>
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" required />
+        </div>
+        <div>
+            <label for="recipient-account-number">Recipient Account Number</label>
+            <input type="text" id="recipient-account-number" required />
+        </div>
+        <div>
+            <label for="pin">Pin</label>
+            <input type="text" id="pin" required />
+        </div>
+        <div>
+            <button type="button" onclick="validateAndPay()"> Pay </button>
+        </div>
+    </form>
+
+    <script>
+        function validateAndPay() {
+            let current_user_index = localStorage.getItem('user_index') ? Number(localStorage.getItem('user_index')) : null;
+            let retrievedUsers = localStorage.getItem('userdetails');
+            let parsedUsers = JSON.parse(retrievedUsers);
+
+            let sender = parsedUsers[current_user_index]; 
+            let userPin = sender.pin;
+            let senderBalance = sender.balance;
+            const enteredPin = document.getElementById("pin").value;
+            const recipientAccNumber = document.getElementById("recipient-account-number").value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            if (amount > senderBalance) {
+                alert('Insufficient balance.');
+                return;
+            } else if (amount === senderBalance) {
+                alert('You cannot send your entire balance.');
+                return;
+            }
+            if (enteredPin !== userPin) {
+                alert('Invalid PIN. Please try again.');
+                return;
+            }
+            let recipientIndex = parsedUsers.findIndex(user => user.accNo == recipientAccNumber);
+
+            if (recipientIndex === -1) {
+                alert('Recipient account number not found.');
+                return;
+            }
+
+            sender.balance -= amount;
+
+            parsedUsers[recipientIndex].balance += amount;
+
+         
+            localStorage.setItem('userdetails', JSON.stringify(parsedUsers));
+
+           
+            console.log("Sender's new balance: ", sender.balance);
+            console.log("Recipient's new balance: ", parsedUsers[recipientIndex].balance);
+
+           
+            payWithPaystack();
+        }
+
+        function payWithPaystack() {
+            var handler = PaystackPop.setup({
+                key: 'pk_test_240da7c497e6d099cd947ea3491c7aa7460ed0c1', 
+                email: document.getElementById("email-address").value, 
+                amount: document.getElementById("amount").value * 100, 
+                currency: "NGN",
+                callback: function(response) {
+                    alert('Payment complete! Reference: ' + response.reference);
+                },
+                onClose: function() {
+                    alert('Transaction was not completed, window closed.');
+                }
+            });
+
+            handler.openIframe(); 
+        }
+    </script>
+</body>
+</html>
+
+   

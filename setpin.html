@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set PIN</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="container shadow p-5">
+        <h2>Set PIN</h2>
+        <label for="pins">New PIN</label>
+        <input type="password" id="pins" class="form-control" maxlength="4" required>
+        
+        <label for="confirmpin" class="mt-2">Confirm PIN</label>
+        <input type="password" id="confirmpin" class="form-control" maxlength="4" required>
+        
+        <button class="mt-2 btn btn-success" onclick="setPin()">Submit</button>
+    </div>
+
+    <script>
+        // let current_user_index = localStorage.getItem('user_index') ? Number(localStorage.getItem('user_index')) : null; 
+        // var retrievedobj = JSON.parse(localStorage.getItem('userdetails'));
+        
+        // const setPin = () => {
+        //     let pins = document.getElementById('pins').value;
+        //     let confirmpin = document.getElementById('confirmpin').value;
+
+        //     if (pins.length !== 4) {
+        //         alert("PIN should be four digits");
+        //         return;
+        //     }
+
+        //     if (pins !== confirmpin) {
+        //         alert("PIN does not match");           
+        //         return;
+        //     }
+
+        //     let currentUser = retrievedobj[current_user_index];
+        //     currentUser.pin = pins; 
+        //     localStorage.setItem('userdetails', JSON.stringify(retrievedobj));
+        //     alert("PIN set successfully");
+        //     window.location.href = "index.html";
+        // }
+        const setPin = () => {
+            var retrievedobj = JSON.parse(localStorage.getItem('userdetails'));
+            let current_user_index = localStorage.getItem('user_index') ? Number(localStorage.getItem('user_index')) : null; 
+    let pins = document.getElementById('pins').value;
+    let confirmpin = document.getElementById('confirmpin').value;
+
+    if (pins.length !== 4) {
+        alert("PIN should be four digits");
+        return;
+    }
+
+    if (pins !== confirmpin) {
+        alert("PIN does not match");
+        return;
+    }
+
+    let currentUser = retrievedobj[current_user_index];
+    currentUser.pin = pins;  // Set PIN
+    currentUser.isPinSet = true;  // Mark that the PIN has been set
+
+    // Save updated user details back to localStorage
+    localStorage.setItem('userdetails', JSON.stringify(retrievedobj));
+
+    alert("PIN set successfully");
+    window.location.href = "index.html";  // Redirect to home after setting PIN
+}
+
+    </script>
+    <script src="bootstrap.js"></script>
+</body>
+</html>
