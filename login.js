@@ -48,7 +48,7 @@ const Login = () => {
         alert('User Found');
         // Check if the user has already set their PIN
         if (currentUser.isPinSet) {
-            window.location.href = "index.html";  // Redirect to home if PIN is already set
+            window.location.href = "dashboard.html";  // Redirect to home if PIN is already set
         } else {
             window.location.href = "setpin.html";  // Redirect to set PIN page if PIN is not set
         }
