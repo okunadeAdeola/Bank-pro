@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+       overflow-x: hidden;
+    }
+    .nav{
+        background-color: aliceblue;
+        height: 80px;
+    }
+    #firstId{
+        padding-left: 1.9%;
+        padding-top: 0.6%;
+    }
+    .span{
+        font-size: 20px;
+        margin-left: 8px;
+    }
+   #signupId{
+        margin-left: 700px;
+        transition: 20px;
+    }
+    #signinId{
+        transition: 20px;
+        margin-left: 20px;
+        border: none;
+    }
+    #signinId :hover{
+        background-color: red;
+        transition: 20px;
+    }
+    #signupId :hover{
+        background-color: red;
+        transition: 20px;
+    }
+    header{
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+
+    @media screen and (max-width:480px) {
+        header{
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+    #signupId{
+            
+            margin-left: 20px;
+            
+        }
+      .span{
+        font-size: 17px;
+        position: relative;
+        top: 20px;        
+      }
+      img{
+        width: 40px;
+    
+        margin-left: -10px;
+      }
+      #signinId{
+        margin-left: -1px;
+      }
+      button{
+        width: 100px !important;
+      }
+    }
+</style>
+<body>
+    <header>
+        <nav class="nav">
+            <div id="firstId">
+                <img src="images/credit-card.png" alt="" style="height: 65px;"><span class="span">Mini Finance</span>
+            </div>
+            <div>
+                <a href="signup.html" id="signupId"><button style="width: 140px; height: 60px; border-radius: 45%;margin-top: 10px; background-color:blue; color:white; border: none;">Sign up</button></a>
+            </div>
+            <div>
+                <a href="Signin.html" id="signinId"><button style="width: 140px; height: 60px; border-radius: 45%;margin-top: 10px; background-color:blue; color:white; border: none;">Login</button></a>
+            </div>
+        </nav>
+    </header>
+        <div class="container d-flex">
+            <div class="col-6 mt-5 position-absolute">
+                <h2>Enjoy your world of banking </h2>
+                <h2>By joining or register on our bank</h2>
+                <h2>Click the link below to to get started</h2>
+                <a href="signup.html"><button class="btn btn-primary">Get Started</button></a>
+            </div>
+            <div class="col-6">
+                <img src="images/elisha flyer.jpg" alt="" style="width: 900px;">
+            </div>
+        </div>
+
+
+
+    <script src="bootstrap.js"></script>
+</body>
+</html>

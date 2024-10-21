@@ -3,132 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank App Landing Page</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #003366;
+    color: white;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #00ccff;
+}
+
+.hero {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #00ccff;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #003366;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.feature {
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+    color: #333;
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        margin-bottom: 30px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+}
+
+</style>
 <body>
-
-<section class="background-radial-gradient overflow-hidden">
-    <style>
-      .background-radial-gradient {
-        background-color: hsl(218, 41%, 15%);
-        background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(218, 41%, 35%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%),
-          radial-gradient(1250px circle at 100% 100%,
-            hsl(218, 41%, 45%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%);
-      }
-  
-      #radius-shape-1 {
-        height: 220px;
-        width: 220px;
-        top: -60px;
-        left: -130px;
-        background: radial-gradient(#44006b, #ad1fff);
-        overflow: hidden;
-      }
-  
-      #radius-shape-2 {
-        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-        bottom: -60px;
-        right: -110px;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(#44006b, #ad1fff);
-        overflow: hidden;
-      }
-  
-      .bg-glass {
-        background-color: hsla(0, 0%, 100%, 0.9) !important;
-        backdrop-filter: saturate(200%) blur(25px);
-      }
-    </style>
-  
-    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-      <div class="row gx-lg-5 align-items-center mb-5">
-        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            The best offer <br />
-            <span style="color: hsl(218, 81%, 75%)">for your business</span>
-          </h1>
-          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Temporibus, expedita iusto veniam atque, magni tempora mollitia
-            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-            ab ipsum nisi dolorem modi. Quos?
-          </p>
-        </div>
-  
-        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-  
-          <div class="card bg-glass">
-            <div class="card-body px-4 py-5 px-md-5">
-              <div>
-               <h3>SIGN UP</h3>
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="firstname" class="form-control" />
-                      <label class="form-label" for="First name">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="lastname" class="form-control" />
-                      <label class="form-label" for="Last Name">Last name</label>
-                    </div>
-                  </div>
-                </div>
-  
-               
-                <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control" />
-                  <label class="form-label" for="Email">Email address</label>
-                </div>
-  
-                <div data-mdb-input-init class="form-outline mb-4"></div>
-                  <input type="number" id="phone" class="form-control" />
-                  <label class="form-label" for="Phone">Phone Number</label>
-                </div>
-               
-                <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="password" id="password" class="form-control" />
-                  <label class="form-label" for="Password">Password</label>
-                </div>
-  
-          
-                <div class="form-check d-flex justify-content-center mb-4">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="box" checked />
-                  <label class="form-check-label" for="Checkbox">
-                    Subscribe to our newsletter
-                  </label>
-                </div>
-  
-           
-                <button onclick="Signup()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4 w-75 mx-5">
-                  Sign up
-                </button>
-
-                <p>Have an account? <a href="Signin.html" class="link-info">Login here</a></p>
+    <header>
+        <div class="logo">MyBank</div>
+        <nav class="d-flex">
+            <div>
+                <a href="signup.html" id="signupId"><button style="width: 140px; height: 60px; border-radius: 45%;margin-top: 10px; background-color:blue; color:white; border: none;">Sign up</button></a>
             </div>
+            <div>
+                <a href="Signin.html" id="signinId"><button style="width: 140px; height: 60px; border-radius: 45%;margin-top: 10px; background-color:blue; color:white; border: none;">Login</button></a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
+        </nav>
+    </header>
 
-  <script src="bootstrap.js"></script>
-  <script src="signup.js"></script>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to MyBank</h1>
+            <p>Your financial freedom starts here.</p>
+            <a href="signup.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Fast Transfers</h2>
+            <p>Transfer money to anyone, anywhere, at any time with ease.</p>
+        </div>
+        <div class="feature">
+            <h2>Secure Banking</h2>
+            <p>Your money and data are protected with top-notch security.</p>
+        </div>
+        <div class="feature">
+            <h2>Mobile Access</h2>
+            <p>Manage your finances on the go with our easy-to-use mobile app.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Adey square and Co. All rights reserved.</p>
+    </footer>
+    <script src="bootstrap.js"></script>
 </body>
 </html>
